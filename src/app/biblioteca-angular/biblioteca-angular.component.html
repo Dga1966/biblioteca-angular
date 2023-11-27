@@ -1,1 +1,22 @@
 <p>biblioteca-angular works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Paginas</th>
+        <th scope="col">Autor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let libro of libros">
+        <th scope="row">{{libro.id}}</th>
+        <td>{{libro.titulo}}</td>
+        <td>{{libro.paginas}}</td>
+        <td *ngIf="libro.autor==null; then thenBlock else elseBlock"></td>
+<ng-template #thenBlock>Sin autor</ng-template>
+<ng-template #elseBlock>{{libro.autor?.nombre}}</ng-template>
+      </tr>
+    </tbody>
+  </table>
+  
