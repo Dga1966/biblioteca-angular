@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LibrosDataService } from '../libros-data.service';
 
 @Component({
   selector: 'biblioteca-angular',
@@ -36,9 +37,12 @@ libros= [
     }
 }
 ];
-  constructor() { }
+  constructor(private librosService: LibrosDataService) { }
 
   ngOnInit(): void {
+    this.librosService.getLibros().subscribe((libros:any)=>{
+      this.libros=libros;
+    })
   }
 
 }
